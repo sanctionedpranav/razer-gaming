@@ -5,21 +5,20 @@ const BentoTilt = ({ children, className }) => {
   const [transformStyle, setTransformStyle] = useState("");
   const itemRef = useRef(null);
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (event) => {
     if (!itemRef.current) return;
 
     const { left, top, width, height } =
       itemRef.current.getBoundingClientRect();
 
-    const relativeX = (e.clientX - left) / width;
-    const relativeY = (e.clientY - top) / height;
+    const relativeX = (event.clientX - left) / width;
+    const relativeY = (event.clientY - top) / height;
 
-    const tiltX = (relativeX - 0.5) * 5;
-    const tiltY = (relativeY - 0.5) * -5;
+    const tiltX = (relativeY - 0.5) * 5;
+    const tiltY = (relativeX - 0.5) * -5;
 
-    const newTransformStyle = `perspective(700px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(0.98, 0.98, 0.98)`;
-
-    setTransformStyle(newTransformStyle);
+    const newTransform = `perspective(700px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(.95, .95, .95)`;
+    setTransformStyle(newTransform);
   };
 
   const handleMouseLeave = () => {
@@ -126,7 +125,7 @@ const Features = () => {
             />
           </BentoTilt>
 
-          <div className="bento-tilt_2">
+          <BentoTilt className="bento-tilt_2">
             <div className="flex size-full flex-col justify-between bg-violet-300 p-5">
               <h1 className="bento-title special-font  max-w-64 text-black">
                 M<b>o</b>re Co<b>m</b>ing S<b>o</b>on
@@ -134,9 +133,9 @@ const Features = () => {
 
               <TiLocationArrow className="m-5 scale-[5] self-end" />
             </div>
-          </div>
+          </BentoTilt>
 
-          <div className="bento-tilt_2">
+          <BentoTilt className="bento-tilt_2">
             <video
               src="videos/feature-5.mp4"
               loop
@@ -144,7 +143,7 @@ const Features = () => {
               autoPlay
               className="size-full object-cover object-center"
             />
-          </div>
+          </BentoTilt>
         </div>
       </div>
     </section>
