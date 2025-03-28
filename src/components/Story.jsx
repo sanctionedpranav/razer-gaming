@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import AnimatedTitle from "./AnimatedTitle";
 import gsap from "gsap";
-import RoundedCornerSVG from "./RoundedCornerSVG";
 import Button from "./Button";
+import RoundedCornerSVG from "./RoundedCornerSVG";
 
 const Story = () => {
   const frameRef = useRef(null);
